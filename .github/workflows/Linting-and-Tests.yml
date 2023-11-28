@@ -15,4 +15,3 @@ jobs:
         run: |
           make lint
           make tests
-        
