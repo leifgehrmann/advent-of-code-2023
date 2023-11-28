@@ -1,0 +1,18 @@
+name: Linting and Tests
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: php-actions/composer@v6
+      - name: Run
+        run: |
+          make lint
+          make tests
+        
