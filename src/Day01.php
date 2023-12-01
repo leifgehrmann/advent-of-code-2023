@@ -11,7 +11,7 @@ use Exception;
 class Day01 extends AbstractDay
 {
     /**
-     * @param int[] $entries
+     * @param string[] $lines
      * @return int
      * @throws Exception
      */
@@ -36,26 +36,43 @@ class Day01 extends AbstractDay
     }
 
     /**
-     * @param int[] $entries
+     * @param string[] $lines
      * @return int
      * @throws Exception
      */
-    public function solvePart2(array $entries): int
+    public function solvePart2(array $lines): int
     {
-        $maxRange = count($entries) - 1;
-        foreach (range(0, $maxRange) as $a) {
-            foreach (range($a, $maxRange) as $b) {
-                if ($entries[$a] + $entries[$b] > 2020) {
-                    continue;
-                }
-                foreach (range($b, $maxRange) as $c) {
-                    if ($entries[$a] + $entries[$b] + $entries[$c] === 2020) {
-                        return $entries[$a] * $entries[$b] * $entries[$c];
-                    }
-                }
+        $spelledNumbers = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+        $reversedSpelledNumbers = array_map(fn($num) => strrev($num), $spelledNumbers);
+        $forwardRe = '/([0-9]|' . implode('|', $spelledNumbers) . ')/m';
+        $backwardRe = '/([0-9]|' . implode('|', $reversedSpelledNumbers) . ')/m';
+
+        $sum = 0;
+
+        foreach ($lines as $line) {
+            preg_match($forwardRe, $line, $matches);
+            $firstDigit = $matches[1];
+
+            preg_match($backwardRe, strrev($line), $matches);
+            $secondDigit = $matches[1];
+
+            if (strlen($firstDigit) > 1) {
+                $firstDigit = (array_search($firstDigit, $spelledNumbers) ?: 0) + 1;
+            } else {
+                $firstDigit = intval($firstDigit);
             }
+
+            if (strlen($secondDigit) > 1) {
+                $secondDigit = (array_search($secondDigit, $reversedSpelledNumbers) ?: 0) + 1;
+            } else {
+                $secondDigit = intval($secondDigit);
+            }
+
+            $calibrationValue = $firstDigit * 10 + $secondDigit;
+            $sum += $calibrationValue;
         }
-        throw new Exception('Failed to find mistake');
+
+        return $sum;
     }
 
     public function solve(): array
@@ -64,7 +81,7 @@ class Day01 extends AbstractDay
 
         return [
             "Part 1" => $this->solvePart1($lines),
-            // "Part 2" => $this->solvePart2($entries)
+            "Part 2" => $this->solvePart2($lines)
         ];
     }
 }
