@@ -7,7 +7,6 @@ use PHPUnit\Framework\TestCase;
 
 final class Day01Test extends TestCase
 {
-
     public function testSolvePart1(): void
     {
         $dayPuzzle = new Day01();
