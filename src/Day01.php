@@ -15,16 +15,24 @@ class Day01 extends AbstractDay
      * @return int
      * @throws Exception
      */
-    public function solvePart1(array $entries): int
+    public function solvePart1(array $lines): int
     {
-        foreach ($entries as $entryA) {
-            foreach ($entries as $entryB) {
-                if ($entryA + $entryB === 2020) {
-                    return $entryA * $entryB;
-                }
+        $sum = 0;
+        $re = '/^[a-z]*([0-9])?[a-z0-9]*([0-9])[a-z]*$/m';
+        foreach ($lines as $line) {
+            preg_match($re, $line, $matches);
+            $firstDigit = null;
+            if ($matches[1] !== '') {
+                $firstDigit = intval($matches[1]);
             }
+            $secondDigit = intval($matches[2]);
+            if ($firstDigit === null) {
+                $firstDigit = $secondDigit;
+            }
+            $calibrationValue = $firstDigit * 10 + $secondDigit;
+            $sum += $calibrationValue;
         }
-        throw new Exception('Failed to find mistake');
+        return $sum;
     }
 
     /**
@@ -52,14 +60,11 @@ class Day01 extends AbstractDay
 
     public function solve(): array
     {
-        $entries = array_map(
-            fn ($val) => intval($val),
-            explode("\n", $this->getInputString())
-        );
+        $lines = explode("\n", $this->getInputString());
 
         return [
-            "Part 1" => $this->solvePart1($entries),
-            "Part 2" => $this->solvePart2($entries)
+            "Part 1" => $this->solvePart1($lines),
+            // "Part 2" => $this->solvePart2($entries)
         ];
     }
 }
