@@ -19,3 +19,5 @@ lint: ## Runs linters and static-analysis
 .PHONY: tests
 tests: ## Runs all unit tests with PHPUnit and Testdox
 	./vendor/bin/phpunit --testdox --colors tests
+
+test: tests
