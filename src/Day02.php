@@ -44,6 +44,16 @@ class Day02 extends AbstractDay
         return array_sum(array_map(fn ($validGame) => $validGame['id'], $validGames));
     }
 
+    public function solvePart2(array $games): int
+    {
+        return array_sum(array_map(function ($game) {
+            $maxRedCube = (int) max(0, ...array_column($game['cubeSubsets'], 'red'));
+            $maxGreenCube = (int) max(0, ...array_column($game['cubeSubsets'], 'green'));
+            $maxBlueCube = (int) max(0, ...array_column($game['cubeSubsets'], 'blue'));
+            return $maxRedCube * $maxGreenCube * $maxBlueCube;
+        }, $games));
+    }
+
     /**
      * @param string $gameString
      * @return Game
@@ -85,6 +95,7 @@ class Day02 extends AbstractDay
 
         return [
             "Part 1" => $this->solvePart1($games),
+            "Part 2" => $this->solvePart2($games),
         ];
     }
 }
