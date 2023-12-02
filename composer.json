@@ -1,7 +1,8 @@
 {
     "autoload": {
         "psr-4": {
-            "Aoc\\": "src/"
+            "Aoc\\": "src/",
+            "Aoc\\Tests\\": "tests/"
         }
     },
     "require-dev": {

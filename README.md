@@ -4,9 +4,10 @@ My attempts at the [Advent of Code 2023](https://adventofcode.com/2023) challeng
 
 ## Solutions
 
-| Day | Name        | Code                             | Input Data                         | Time †      | GitHub Action Output                                                                                                                                                                                                      |
-|-----|-------------|----------------------------------|------------------------------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 01  | Trebuchet?! | [src/Day01.php](./src/Day01.php) | [src/Day01.data](./src/Day01.data) | `0.002655s` | [![Day-01](https://github.com/leifgehrmann/advent-of-code-2023/actions/workflows/Day-01.yml/badge.svg?branch=main)](https://github.com/leifgehrmann/advent-of-code-2023/actions/workflows/Day-01.yml?query=branch%3Amain) |
+| Day | Name            | Code                             | Input Data                         | Time †      | GitHub Action Output                                                                                                                                                                                                      |
+|-----|-----------------|----------------------------------|------------------------------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 01  | Trebuchet?!     | [src/Day01.php](./src/Day01.php) | [src/Day01.data](./src/Day01.data) | `0.002655s` | [![Day-01](https://github.com/leifgehrmann/advent-of-code-2023/actions/workflows/Day-01.yml/badge.svg?branch=main)](https://github.com/leifgehrmann/advent-of-code-2023/actions/workflows/Day-01.yml?query=branch%3Amain) |
+| 02  | Cube Conundrum  | [src/Day02.php](./src/Day02.php) | [src/Day02.data](./src/Day02.data) | `0.001402s` | [![Day-02](https://github.com/leifgehrmann/advent-of-code-2023/actions/workflows/Day-02.yml/badge.svg?branch=main)](https://github.com/leifgehrmann/advent-of-code-2023/actions/workflows/Day-02.yml?query=branch%3Amain) |
 
 † The measured execution time in GitHub Actions
 
