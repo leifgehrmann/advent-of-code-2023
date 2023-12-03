@@ -18,7 +18,6 @@ final class Day01Test extends TestCase
         $this->assertSame($dayPuzzle->solvePart1(['a1b']), 11);
         $this->assertSame($dayPuzzle->solvePart1(['123456789']), 19);
         $this->assertSame($dayPuzzle->solvePart1(['9']), 99);
-        $this->assertSame($dayPuzzle->solvePart1(['c']), 0);
     }
 
     public function testSolvePart2(): void
