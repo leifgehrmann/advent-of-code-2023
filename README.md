@@ -36,11 +36,35 @@ My attempts at the [Advent of Code 2023](https://adventofcode.com/2023) challeng
 
 † The measured execution time in GitHub Actions
 
+## Installation
+
+### Installing on your machine
+
+Installation with vary on each system. For a full environment the following dependencies should be installed:
+
+* [PHP](https://www.php.net) 8.3
+* [Composer](https://getcomposer.org) 2.6
+* [Xdebug](https://xdebug.org) 3.3
+
+### Installing with Docker
+
+Using [Docker](https://www.docker.com/get-started/) avoids the complexity of installing the dependencies listed above.
+
+Once Docker is installed, a Docker image can be built by running:
+
+```shell
+make docker-build
+```
+
+Once built, an interactive shell with the project directory mounted can be started by running: 
+
+```shell
+make shell
+```
+
 ## How to run
 
-The puzzles can be run by either installing PHP and [Composer](https://getcomposer.org) directly on your machine, or using [Docker](https://www.docker.com/get-started/). Assuming Docker is installed, run `make shell` to run an interactive shell with Composer installed:
-
-Before running the code, the dependencies must be installed by running:
+Before running the code, the PHP dependencies must be installed by running:
 
 ```shell
 composer install
