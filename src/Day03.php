@@ -2,8 +2,6 @@
 
 namespace Aoc;
 
-use Exception;
-
 /**
  * The class is used, it's just called dynamically from App.php.
  * @psalm-suppress UnusedClass

@@ -2,8 +2,6 @@
 
 namespace Aoc;
 
-use Exception;
-
 /**
  * @psalm-type Card = array{
  *        id: int,

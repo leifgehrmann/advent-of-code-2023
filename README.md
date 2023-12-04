@@ -65,6 +65,18 @@ The solutions can be benchmarked by adding the flag `-b`:
 php src/main.php 01 -b
 ```
 
+### Why is the input data encrypted? 
+
+Note that the input data included in this repository have been encrypted, and exist purely for personal use.
+This is because the input data is the [sole property of Advent of Code](https://adventofcode.com/2023/about#legal), and is not licensed for reproduction or distribution. 
+To test with your own input, replace the contents of the file `src/Day**.data` with your own inputs from [adventofcode.com](https://adventofcode.com).
+
+If you somehow are in possession of the encryption key, you can unlock it using [git-crypt](https://github.com/AGWA/git-crypt) by running:
+
+```shell
+echo "${BASE64_ENCODED_KEY}" | base64 -d | git-crypt unlock -
+```
+
 ## How to develop
 
 As mentioned above, the code for each puzzle can be run individually. But this project has additional tools to help with development.
@@ -82,6 +94,8 @@ This can be run quickly for all tests from the Makefile:
 ```shell
 make tests
 ```
+
+Note that some of the test data includes sample data from adventofcode.com, which have been encrypted for the same legal reasons mentioned above in "Why is the input data encrypted?". These tests will be skipped when attempting to run the tests.
 
 ### Linting & Static Analysis
 

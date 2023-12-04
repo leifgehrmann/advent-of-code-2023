@@ -2,8 +2,6 @@
 
 namespace Aoc;
 
-use Exception;
-
 abstract class AbstractDay
 {
     /**
@@ -11,7 +9,6 @@ abstract class AbstractDay
      * be a string or an integer.
      *
      * @return (string|int)[]
-     * @throws Exception
      */
     abstract public function solve(): array;
 
@@ -19,7 +16,6 @@ abstract class AbstractDay
      * Returns the contents of the .data file for the respective day.
      *
      * @return string
-     * @throws Exception
      */
     protected function getInputString(): string
     {
@@ -27,7 +23,7 @@ abstract class AbstractDay
         preg_match('/Day\d\d?/', $className, $matches);
         $contents = file_get_contents(__DIR__ . "/$matches[0].data");
         if (is_bool($contents)) {
-            throw new Exception(
+            throw new \RuntimeException(
                 "Failed to read contents of " . __DIR__ . "/$matches[0].data"
             );
         }

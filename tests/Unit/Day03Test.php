@@ -29,18 +29,7 @@ TXT;
     public function testPart2ExampleInput(): void
     {
         $dayPuzzle = new Day03();
-        $input = <<<TXT
-467..114..
-...*......
-..35..633.
-......#...
-617*......
-.....+.58.
-..592.....
-......755.
-...$.*....
-.664.598..
-TXT;
+        $input = Helper::getSampleData('Day03Sample.data');
 
         $this->assertSame($dayPuzzle->solvePart2($input), 467835);
     }

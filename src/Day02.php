@@ -2,8 +2,6 @@
 
 namespace Aoc;
 
-use Exception;
-
 /**
  * @psalm-type CubeSubset = array{
  *        red: int,

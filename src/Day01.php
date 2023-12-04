@@ -2,8 +2,6 @@
 
 namespace Aoc;
 
-use Exception;
-
 /**
  * The class is used, it's just called dynamically from App.php.
  * @psalm-suppress UnusedClass
@@ -13,7 +11,6 @@ class Day01 extends AbstractDay
     /**
      * @param string[] $lines
      * @return int
-     * @throws Exception
      */
     public function solvePart1(array $lines): int
     {
@@ -38,7 +35,6 @@ class Day01 extends AbstractDay
     /**
      * @param string[] $lines
      * @return int
-     * @throws Exception
      */
     public function solvePart2(array $lines): int
     {
