@@ -12,6 +12,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - uses: amplium/git-crypt-action@master
+        with:
+          key_encoded: ${{ secrets.GIT_CRYPT_KEY }}
       - uses: php-actions/composer@v6
       - name: Run
         run: php src/main.php 01 -b
