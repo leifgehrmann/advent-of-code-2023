@@ -4,12 +4,13 @@ My attempts at the [Advent of Code 2023](https://adventofcode.com/2023) challeng
 
 ## Solutions
 
-| Day | Name           | Code                             | Time †      |
-|-----|----------------|----------------------------------|-------------|
-| 01  | Trebuchet?!    | [src/Day01.php](./src/Day01.php) | `0.002655s` |
-| 02  | Cube Conundrum | [src/Day02.php](./src/Day02.php) | `0.001402s` |
-| 03  | Gear Ratios    | [src/Day03.php](./src/Day03.php) | `0.006805s` |
-| 04  | Scratchcards   | [src/Day04.php](./src/Day04.php) | `0.006466s` |
+| Day | Name                            | Code                             | Time †    |
+|-----|---------------------------------|----------------------------------|-----------|
+| 01  | Trebuchet?!                     | [src/Day01.php](./src/Day01.php) | `0.002655s` |
+| 02  | Cube Conundrum                  | [src/Day02.php](./src/Day02.php) | `0.001402s` |
+| 03  | Gear Ratios                     | [src/Day03.php](./src/Day03.php) | `0.006805s` |
+| 04  | Scratchcards                    | [src/Day04.php](./src/Day04.php) | `0.006466s` |
+| 05  | If You Give A Seed A Fertilizer | [src/Day05.php](./src/Day05.php) | `` |
 
 † The measured execution time in GitHub Actions
 
