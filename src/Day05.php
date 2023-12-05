@@ -10,8 +10,8 @@ namespace Aoc;
  *    }
  * @psalm-type     Map = list<Range>
  * @psalm-type     Puzzle = array{
- *         seeds: array{int},
- *         maps: array{Map},
+ *         seeds: list<int>,
+ *         maps: list<Map>,
  *    }
  * The class is used, it's just called dynamically from App.php.
  * @psalm-suppress UnusedClass
@@ -64,6 +64,7 @@ class Day05 extends AbstractDay
             }
         }
 
+        /** @var list<int> $newSeeds */
         $newSeeds = array_filter(
             $newSeeds,
             fn ($seedIndex) => $this->seedIndexIsInSeedRanges($seedIndex, $seedRanges)
@@ -93,7 +94,7 @@ class Day05 extends AbstractDay
 
     /**
      * @param int $destination
-     * @param array{Map} $maps
+     * @param list<Map> $maps
      * @param int $mapLevels
      * @return int
      */
