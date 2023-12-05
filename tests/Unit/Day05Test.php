@@ -15,6 +15,14 @@ final class Day05Test extends TestCase
         $this->assertSame(35, $dayPuzzle->solvePart1($puzzle));
     }
 
+    public function testPart2ExampleInput(): void
+    {
+        $dayPuzzle = new Day05();
+        $input = Helper::getSampleData('Day05Sample.data');
+        $puzzle = $dayPuzzle->parsePuzzle($input);
+        $this->assertSame(46, $dayPuzzle->solvePart2($puzzle));
+    }
+
     public function testParsePuzzle(): void
     {
         $dayPuzzle = new Day05();
@@ -60,7 +68,7 @@ final class Day05Test extends TestCase
     }
 
     /**
-     * @dataProvider providerScoreCard
+     * @dataProvider providerFindMappedValue
      */
     public function testFindMappedValue(int $number, array $map, int $expectedValue): void
     {
@@ -68,7 +76,7 @@ final class Day05Test extends TestCase
         $this->assertSame($expectedValue, $dayPuzzle->findMappedValue($number, $map));
     }
 
-    public static function providerScoreCard(): array
+    public static function providerFindMappedValue(): array
     {
         $dayPuzzle = new Day05();
         $map = $dayPuzzle->parseMap("seed-to-soil map:\n50 98 2\n52 50 48");
@@ -76,6 +84,27 @@ final class Day05Test extends TestCase
             [79, $map, 81],
             [14, $map, 14],
             [55, $map, 57],
+            [13, $map, 13],
+        ];
+    }
+
+    /**
+     * @dataProvider providerFindReverseMappedValue
+     */
+    public function testFindReverseMappedValue(int $number, array $map, int $expectedValue): void
+    {
+        $dayPuzzle = new Day05();
+        $this->assertSame($expectedValue, $dayPuzzle->findReverseMappedValue($number, $map));
+    }
+
+    public static function providerFindReverseMappedValue(): array
+    {
+        $dayPuzzle = new Day05();
+        $map = $dayPuzzle->parseMap("seed-to-soil map:\n50 98 2\n52 50 48");
+        return [
+            [81, $map, 79],
+            [14, $map, 14],
+            [57, $map, 55],
             [13, $map, 13],
         ];
     }
