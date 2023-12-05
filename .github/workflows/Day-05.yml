@@ -1,0 +1,20 @@
+name: Day-05
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '**05*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: amplium/git-crypt-action@master
+        with:
+          key_encoded: ${{ secrets.GIT_CRYPT_KEY }}
+      - uses: php-actions/composer@v6
+      - name: Run
+        run: php src/main.php 05 -b
