@@ -12,6 +12,7 @@ My attempts at the [Advent of Code 2023](https://adventofcode.com/2023) challeng
 | 04  | Scratchcards                    | [src/Day04.php](./src/Day04.php) | `0.006466s` |
 | 05  | If You Give A Seed A Fertilizer | [src/Day05.php](./src/Day05.php) | `0.002637s` |
 | 06  | Wait For It                     | [src/Day06.php](./src/Day06.php) | `0.000059s` |
+| 07  | Camel Cards                     | [src/Day07.php](./src/Day07.php) | `0.239075s` |
 
 † The measured execution time in GitHub Actions
 
