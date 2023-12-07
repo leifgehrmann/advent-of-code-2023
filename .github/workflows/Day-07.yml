@@ -1,4 +1,4 @@
-name: Day-067
+name: Day-07
 
 on:
   workflow_dispatch:
