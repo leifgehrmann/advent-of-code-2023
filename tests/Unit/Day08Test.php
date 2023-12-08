@@ -22,4 +22,12 @@ final class Day08Test extends TestCase
         $puzzle = $dayPuzzle->parsePuzzle($input);
         $this->assertSame(6, $dayPuzzle->solvePart1($puzzle));
     }
+
+    public function testPart2ExampleInput2(): void
+    {
+        $dayPuzzle = new Day08();
+        $input = Helper::getSampleData('Day08Sample3.data');
+        $puzzle = $dayPuzzle->parsePuzzle($input);
+        $this->assertSame(6, $dayPuzzle->solvePart2($puzzle));
+    }
 }
