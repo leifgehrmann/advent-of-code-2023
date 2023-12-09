@@ -12,22 +12,27 @@ class Day09 extends AbstractDay
 {
     /**
      * @param Puzzle $puzzle
-     * @return int
+     * @return array{nextSum: int, previousSum: int}
      */
-    public function solvePart1(array $puzzle): int
+    public function solvePart1AndPart2(array $puzzle): array
     {
-        $sum = 0;
+        $nextSum = 0;
+        $previousSum = 0;
         foreach ($puzzle as $history) {
-            $sum += $this->calculateNextHistoryValue($history);
+            $nextSum += $this->calculateNextAndPreviousHistoryValues($history)['next'];
+            $previousSum += $this->calculateNextAndPreviousHistoryValues($history)['previous'];
         }
-        return $sum;
+        return [
+            'nextSum' => $nextSum,
+            'previousSum' => $previousSum,
+        ];
     }
 
     /**
      * @param array<int> $history
-     * @return int
+     * @return array{next: int, previous: int}
      */
-    public function calculateNextHistoryValue(array $history): int
+    public function calculateNextAndPreviousHistoryValues(array $history): array
     {
         $allDerivatives = [$history];
         $lastDerivatives = $history;
@@ -41,8 +46,12 @@ class Day09 extends AbstractDay
 
         for ($i = count($allDerivatives) - 1; $i > 0; $i--) {
             $allDerivatives[$i - 1][] = end($allDerivatives[$i - 1]) + end($allDerivatives[$i]);
+            array_unshift($allDerivatives[$i - 1], $allDerivatives[$i - 1][0] - $allDerivatives[$i][0]);
         }
-        return end($allDerivatives[0]);
+        return [
+            'next' => end($allDerivatives[0]),
+            'previous' => $allDerivatives[0][0],
+        ];
     }
 
     /**
@@ -87,9 +96,11 @@ class Day09 extends AbstractDay
     public function solve(): array
     {
         $puzzle = $this->parsePuzzle($this->getInputString());
+        $output = $this->solvePart1AndPart2($puzzle);
 
         return [
-            "Part 1" => $this->solvePart1($puzzle),
+            "Part 1" => $output['nextSum'],
+            "Part 2" => $output['previousSum'],
         ];
     }
 }
