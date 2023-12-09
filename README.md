@@ -14,6 +14,7 @@ My attempts at the [Advent of Code 2023](https://adventofcode.com/2023) challeng
 | 06  | Wait For It                     | [src/Day06.php](./src/Day06.php) | `0.000059s` |
 | 07  | Camel Cards                     | [src/Day07.php](./src/Day07.php) | `0.239075s` |
 | 08  | Haunted Wasteland               | [src/Day08.php](./src/Day08.php) | `0.066197s` |
+| 09  | Mirage Maintenance              | [src/Day09.php](./src/Day09.php) | `0.027672s` |
 
 † The measured execution time in GitHub Actions
 
