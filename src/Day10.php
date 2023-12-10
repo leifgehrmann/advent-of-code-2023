@@ -54,7 +54,7 @@ class Day10 extends AbstractDay
         // ...|.|..F-J.L-7.|.L-7.F7.L--J.L-7.|.|.|.
         // EEEOOEEEOOOOOOEEOOEEOOEOOEEEOOEEOOEEOOEE
         //    |X|  F-JXL-7 |XL-7XF7XL--JXL-7X| |X|
-        //     X      X     X   X  X    X   X   X = 7
+        //     X      X     X   X  X    X   X   X = 8
 
         // From the example above, it appears that we need to handle special
         // edge cases like:
