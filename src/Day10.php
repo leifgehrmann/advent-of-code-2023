@@ -36,6 +36,91 @@ class Day10 extends AbstractDay
         return (int) ($steps / 2);
     }
 
+    public function solvePart2(array $map): int
+    {
+        // The only way I know of how to check whether a point is within or
+        // outside a shape is the ray-casting algorithm. This is done by
+        // counting the number of intersections for each "edge". If the number
+        // of intersections is odd, then the position is inside the shape.
+        // See https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm
+
+        // For example, let say we have the line, with pipes that are all
+        // part of the loop:
+        // ...|.|..F-J.L-7.|.L-7.F7.L--J.L-7.|.|.|.
+        //
+        // Using the ray casting algorithm, we want to measure even/odd
+        // intersections like so:
+        // ...|.|..F-J.L-7.|.L-7.F7.L--J.L-7.|.|.|.
+        // EEEOOEEEOOOOOOEEOOEEOOEOOEEEOOEEOOEEOOEE
+        //    |X|  F-JXL-7 |XL-7XF7XL--JXL-7X| |X|
+        //     X      X     X   X  X    X   X   X = 7
+
+        // From the example above, it appears that we need to handle special
+        // edge cases like:
+        // - | counts as one edge
+        // - F-*J is one edge
+        // - L-*7 is one edge
+        // - L-*J are two edges
+        // - F-*7 are two edges
+
+        // So first, we want to get all the segments for each row that are part of
+        // the loop, indexed by each line.
+        $startPosition = $this->getStartPosition($map);
+        $movement = $this->getStartMovement($map, $startPosition);
+        $pipesPartOfTheLoop = [$startPosition, $movement];
+        while ($startPosition['x'] !== $movement['x'] || $startPosition['y'] !== $movement['y']) {
+            $pipe = $this->getPipe($map, $movement);
+            $movement = $this->getNextMovement($movement, $pipe);
+            $pipesPartOfTheLoop[] = $movement;
+        }
+
+        /** @var Map $pipelineMap */
+        $pipelineMap = array_fill(0, count($map), str_pad('', strlen($map[0]), ' '));
+        foreach ($pipesPartOfTheLoop as $pipePosition) {
+            $pipelineMap[$pipePosition['y']][$pipePosition['x']] = $this->getPipe($map, $pipePosition);
+        }
+
+        // Our algorithm won't work if the letter S is in the puzzle... So
+        // let's write some lazy code that replaces the pipe with an actual pipe.
+        $startPipe = $this->deriveStartPipe($pipelineMap, $startPosition);
+        $pipelineMap[$startPosition['y']][$startPosition['x']] = $startPipe;
+
+        $totalHoles = 0;
+        foreach ($pipelineMap as $pipelineMapLine) {
+            $intersections = 0;
+            $holesForLine = 0;
+            $lastTurn = ' ';
+            foreach (str_split($pipelineMapLine) as $pipe) {
+                if ($pipe === ' ') {
+                    if ($intersections % 2 === 1) {
+                        $totalHoles += 1;
+                        $holesForLine += 1;
+                    }
+                } elseif ($pipe === '|') {
+                    $intersections += 1;
+                } elseif ($pipe === '-') {
+                    continue;
+                } elseif ($pipe === 'J') {
+                    if ($lastTurn === 'F') {
+                        $intersections += 1;
+                    }
+                } elseif ($pipe === '7') {
+                    if ($lastTurn === 'L') {
+                        $intersections += 1;
+                    }
+                } elseif ($pipe === 'L') {
+                    $lastTurn = $pipe;
+                } elseif ($pipe === 'F') {
+                    $lastTurn = $pipe;
+                }
+            }
+
+            echo "$pipelineMapLine = $holesForLine\n";
+        }
+
+        return $totalHoles;
+    }
+
     /**
      * @param Map $map
      * @return Position
@@ -136,14 +221,25 @@ class Day10 extends AbstractDay
     }
 
     /**
-     * @param Position|Movement $startPosition
-     * @param Position|Movement $position
-     * @return int
+     * @param Map $map
+     * @param Position $startPosition
+     * @return string
      */
-    public function manhattanDistance(array $startPosition, array $position): int
+    public function deriveStartPipe(array $map, array $startPosition): string
     {
-        return abs($startPosition['x'] - $position['x']) +
-            abs($startPosition['y'] - $position['y']);
+        // Half implemented, it only works for the provided input example and
+        $x = $startPosition['x'];
+        $y = $startPosition['y'];
+        if ($map[$y + 1][$x] === '|' && $map[$y][$x + 1] === '-') {
+            return 'F';
+        } elseif ($map[$y + 1][$x] === '|' && $map[$y][$x - 1] === 'F') {
+            return '7';
+        } elseif ($map[$y + 1][$x] === 'J' && $map[$y][$x + 1] === '7') {
+            return 'F';
+        } elseif ($map[$y - 1][$x] === '|' && $map[$y + 1][$x] === '|') {
+            return '|';
+        }
+        throw new RuntimeException('Please update deriveStartPipe to work with your input!');
     }
 
     /**
@@ -161,6 +257,7 @@ class Day10 extends AbstractDay
 
         return [
             "Part 1" => $this->solvePart1($map),
+            "Part 2" => $this->solvePart2($map),
         ];
     }
 }
