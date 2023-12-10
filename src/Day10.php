@@ -11,6 +11,7 @@ use RuntimeException;
  *
  * The class is used, it's just called dynamically from App.php.
  * @psalm-suppress UnusedClass
+ * @psalm-suppress InvalidLiteralArgument
  */
 class Day10 extends AbstractDay
 {
@@ -227,16 +228,22 @@ class Day10 extends AbstractDay
         // Half implemented, it only works for the provided input example and
         $x = $startPosition['x'];
         $y = $startPosition['y'];
-        if ($map[$y + 1][$x] === '|' && $map[$y][$x + 1] === '-') {
-            return 'F';
-        } elseif ($map[$y + 1][$x] === '|' && $map[$y][$x - 1] === 'F') {
+        if (str_contains('J|L', $map[$y + 1][$x])) {
+            if ($y > 0 && str_contains('7|F', $map[$y - 1][$x])) {
+                return '|';
+            } elseif (str_contains('J-7', $map[$y][$x + 1])) {
+                return 'F';
+            }
             return '7';
-        } elseif ($map[$y + 1][$x] === 'J' && $map[$y][$x + 1] === '7') {
-            return 'F';
-        } elseif ($map[$y - 1][$x] === '|' && $map[$y + 1][$x] === '|') {
+        } if ($y > 0 && str_contains('7|F', $map[$y - 1][$x])) {
+            if (str_contains('J-7', $map[$y][$x + 1])) {
+                return 'L';
+            } elseif (str_contains('L-F', $map[$y][$x - 1])) {
+                return 'J';
+            }
             return '|';
         }
-        throw new RuntimeException('Please update deriveStartPipe to work with your input!');
+        return '-';
     }
 
     /**
