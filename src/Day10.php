@@ -74,7 +74,6 @@ class Day10 extends AbstractDay
             $pipesPartOfTheLoop[] = $movement;
         }
 
-        /** @var Map $pipelineMap */
         $pipelineMap = array_fill(0, count($map), str_pad('', strlen($map[0]), ' '));
         foreach ($pipesPartOfTheLoop as $pipePosition) {
             $pipelineMap[$pipePosition['y']][$pipePosition['x']] = $this->getPipe($map, $pipePosition);
@@ -82,19 +81,19 @@ class Day10 extends AbstractDay
 
         // Our algorithm won't work if the letter S is in the puzzle... So
         // let's write some lazy code that replaces the pipe with an actual pipe.
+        /** @var Map $pipelineMap */
         $startPipe = $this->deriveStartPipe($pipelineMap, $startPosition);
         $pipelineMap[$startPosition['y']][$startPosition['x']] = $startPipe;
 
         $totalHoles = 0;
+        /** @var Map $pipelineMap */
         foreach ($pipelineMap as $pipelineMapLine) {
             $intersections = 0;
-            $holesForLine = 0;
             $lastTurn = ' ';
             foreach (str_split($pipelineMapLine) as $pipe) {
                 if ($pipe === ' ') {
                     if ($intersections % 2 === 1) {
                         $totalHoles += 1;
-                        $holesForLine += 1;
                     }
                 } elseif ($pipe === '|') {
                     $intersections += 1;
@@ -114,8 +113,6 @@ class Day10 extends AbstractDay
                     $lastTurn = $pipe;
                 }
             }
-
-            echo "$pipelineMapLine = $holesForLine\n";
         }
 
         return $totalHoles;
