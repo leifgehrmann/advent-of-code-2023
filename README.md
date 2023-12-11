@@ -16,6 +16,7 @@ My attempts at the [Advent of Code 2023](https://adventofcode.com/2023) challeng
 | 08  | Haunted Wasteland               | [src/Day08.php](./src/Day08.php) | `0.066197s` |
 | 09  | Mirage Maintenance              | [src/Day09.php](./src/Day09.php) | `0.027672s` |
 | 10  | Pipe Maze                       | [src/Day10.php](./src/Day10.php) | `0.023185s` |
+| 11  | Cosmic Expansion                | [src/Day11.php](./src/Day11.php) | `1.122419s` |
 
 † The measured execution time in GitHub Actions
 
