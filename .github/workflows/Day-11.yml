@@ -1,10 +1,10 @@
-name: Day-10
+name: Day-11
 
 on:
   workflow_dispatch:
   push:
     paths:
-      - '**10*'
+      - '**11*'
 
 jobs:
   build:
@@ -17,4 +17,4 @@ jobs:
           key_encoded: ${{ secrets.GIT_CRYPT_KEY }}
       - uses: php-actions/composer@v6
       - name: Run
-        run: php src/main.php 10 -b
+        run: php src/main.php 11 -b
