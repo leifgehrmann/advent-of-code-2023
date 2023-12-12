@@ -15,6 +15,14 @@ final class Day12Test extends TestCase
         $this->assertSame(21, $dayPuzzle->solvePart1($puzzle));
     }
 
+    public function testPart2ExampleInput(): void
+    {
+        $dayPuzzle = new Day12();
+        $input = Helper::getSampleData('Day12Sample.data');
+        $puzzle = $dayPuzzle->parsePuzzle($input);
+        $this->assertSame(525152, $dayPuzzle->solvePart2($puzzle));
+    }
+
     /**
      * @dataProvider providerCountArrangements
      */

@@ -2,11 +2,9 @@
 
 namespace Aoc;
 
-use RuntimeException;
-
 /**
  * @psalm-type     Groups = int[]
- * @psalm-type     Puzzle = array{line: string, groups: Groups, pattern: non-empty-string}[]
+ * @psalm-type     Puzzle = array{line: string, groups: Groups}[]
  *
  * The class is used, it's just called dynamically from App.php.
  * @psalm-suppress UnusedClass
@@ -22,7 +20,21 @@ class Day12 extends AbstractDay
     {
         $sum = 0;
         foreach ($puzzle as $item) {
-            $sum += $this->countArrangements($item['line'], $item['pattern']);
+            $pattern = $this->buildPattern($item['groups']);
+            $sum += $this->countArrangements($item['line'], $pattern);
+        }
+        return $sum;
+    }
+
+    public function solvePart2(array $puzzle): int
+    {
+        $sum = 0;
+        foreach ($puzzle as $i => $item) {
+            echo "$i\n";
+            $newLine = join('?', array_fill(0, 5, $item['line']));
+            $newGroups = array_merge(...array_fill(0, 5, $item['groups']));
+            $newPattern = $this->buildPattern($newGroups);
+            $sum += $this->countArrangements($newLine, $newPattern);
         }
         return $sum;
     }
@@ -34,12 +46,13 @@ class Day12 extends AbstractDay
      */
     public function countArrangements(string $line, string $pattern): int
     {
+        if (!$this->matchesLine($line, $pattern)) {
+            return 0;
+        }
+
         $questionPos = strpos($line, '?');
         if ($questionPos === false) {
-            if ($this->matchesLine($line, $pattern)) {
-                return 1;
-            }
-            return 0;
+            return 1;
         }
 
         $line[$questionPos] = '.';
@@ -97,10 +110,11 @@ class Day12 extends AbstractDay
 
     public function solve(): array
     {
-        $map = $this->parsePuzzle($this->getInputString());
+        $puzzle = $this->parsePuzzle($this->getInputString());
 
         return [
-            "Part 1" => $this->solvePart1($map),
+            "Part 1" => $this->solvePart1($puzzle),
+            // "Part 2" => $this->solvePart2($puzzle),
         ];
     }
 }
