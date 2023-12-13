@@ -18,6 +18,7 @@ My attempts at the [Advent of Code 2023](https://adventofcode.com/2023) challeng
 | 10  | Pipe Maze                       | [src/Day10.php](./src/Day10.php) | `0.023185s` |
 | 11  | Cosmic Expansion                | [src/Day11.php](./src/Day11.php) | `1.122419s` |
 | 12  | Hot Springs                     | [src/Day12.php](./src/Day12.php) | Not Solved  |
+| 13  | Point of Incidence              | [src/Day13.php](./src/Day13.php) | `0.015861s` |
 
 † The measured execution time in GitHub Actions
 
