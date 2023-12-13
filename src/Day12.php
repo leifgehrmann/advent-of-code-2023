@@ -98,11 +98,9 @@ class Day12 extends AbstractDay
         foreach ($inputs as $input) {
             list($line, $groupsStr) = explode(' ', $input);
             $groups = array_map(fn ($groupStr) => intval($groupStr), explode(',', $groupsStr));
-            $pattern = $this->buildPattern($groups);
             $output[] = [
                 'line' => $line,
-                'groups' => $groups,
-                'pattern' => $pattern,
+                'groups' => $groups
             ];
         }
         return $output;
