@@ -30,6 +30,24 @@ class Day13 extends AbstractDay
         return $sum;
     }
 
+    public function solvePart2(array $maps): int
+    {
+        $sum = 0;
+        foreach ($maps as $map) {
+            $mirrorOnRows = $this->findMirrorWithSmudge($map);
+            if ($mirrorOnRows !== null) {
+                $sum += $mirrorOnRows * 100;
+                continue; // It seems that the puzzles are designed to never have more than one symmetry.
+            }
+            $newMap = $this->transposeMap($map);
+            $mirrorOnCols = $this->findMirrorWithSmudge($newMap);
+            if ($mirrorOnCols !== null) {
+                $sum += $mirrorOnCols;
+            }
+        }
+        return $sum;
+    }
+
     /**
      * @param string[] $map
      * @return int|null
@@ -54,6 +72,56 @@ class Day13 extends AbstractDay
             }
         }
         return null;
+    }
+
+    /**
+     * @param string[] $map
+     * @return int|null
+     */
+    public function findMirrorWithSmudge(array $map): ?int
+    {
+        $minR = 0;
+        $maxR = count($map) - 1;
+        foreach (range($minR + 1, $maxR) as $r) {
+            $lookBack = $r - 1;
+            $lookNext = $r;
+            $withSmudge = false;
+            while (true) {
+                if ($lookBack < $minR || $lookNext > $maxR) {
+                    if ($withSmudge) {
+                        return $r;
+                    }
+                    break;
+                }
+                /** psalm-ignore PossiblyInvalidArrayOffset */
+                if ($map[$lookBack] !== $map[$lookNext]) {
+                    if ($this->matchesWithSmudge($map[$lookBack], $map[$lookNext])) {
+                        $withSmudge = true;
+                        $lookBack -= 1;
+                        $lookNext += 1;
+                        continue;
+                    }
+                    break;
+                }
+                $lookBack -= 1;
+                $lookNext += 1;
+            }
+        }
+        return null;
+    }
+
+    public function matchesWithSmudge(string $lineA, string $lineB): bool
+    {
+        $maxDiff = 0;
+        for ($i = 0; $i < strlen($lineA); $i++) {
+            if ($lineA[$i] !== $lineB[$i]) {
+                if ($maxDiff > 0) {
+                    return false;
+                }
+                $maxDiff += 1;
+            }
+        }
+        return true;
     }
 
     /**
@@ -90,7 +158,7 @@ class Day13 extends AbstractDay
 
         return [
             "Part 1" => $this->solvePart1($puzzle),
-            // "Part 2" => $this->solvePart2($puzzle),
+            "Part 2" => $this->solvePart2($puzzle),
         ];
     }
 }
