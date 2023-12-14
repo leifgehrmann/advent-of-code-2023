@@ -49,6 +49,8 @@ class Day14 extends AbstractDay
     }
 
     /**
+     * @psalm-suppress InvalidReturnType
+     *
      * @param string[] $map
      * @return string[]
      */
@@ -74,10 +76,13 @@ class Day14 extends AbstractDay
                 }
             }
         }
+        /** @psalm-suppress InvalidReturnStatement */
         return $map;
     }
 
     /**
+     * @psalm-suppress InvalidReturnType
+     *
      * @param string[] $map
      * @return string[]
      */
@@ -144,6 +149,7 @@ class Day14 extends AbstractDay
                 }
             }
         }
+        /** @psalm-suppress InvalidReturnStatement */
         return $map;
     }
 
@@ -188,12 +194,14 @@ class Day14 extends AbstractDay
             }
         }
 
+        /** @psalm-suppress PossiblyNullArrayOffset */
         $startOfLoopCycle = $cycleHashMap[$startOfLoopHash]['cycle'];
 
         while ($nextLoopHash !== $startOfLoopHash) {
             if ($nextLoopHash === null) {
                 $nextLoopHash = $startOfLoopHash;
             }
+            /** @psalm-suppress PossiblyNullArrayOffset */
             $loadValues[] = $cycleHashMap[$nextLoopHash]['load'];
             $nextLoopHash = $cycleHashMap[$nextLoopHash]['mappedHash'];
         }
