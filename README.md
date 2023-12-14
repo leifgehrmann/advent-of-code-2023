@@ -19,6 +19,7 @@ My attempts at the [Advent of Code 2023](https://adventofcode.com/2023) challeng
 | 11  | Cosmic Expansion                | [src/Day11.php](./src/Day11.php) | `1.122419s` |
 | 12  | Hot Springs                     | [src/Day12.php](./src/Day12.php) | Not Solved  |
 | 13  | Point of Incidence              | [src/Day13.php](./src/Day13.php) | `0.015861s` |
+| 14  | Parabolic Reflector Dish        | [src/Day14.php](./src/Day14.php) | `0.996860s` |
 
 † The measured execution time in GitHub Actions
 
