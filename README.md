@@ -4,22 +4,24 @@ My attempts at the [Advent of Code 2023](https://adventofcode.com/2023) challeng
 
 ## Solutions
 
-| Day | Name                            | Code                             | Time †      |
-|-----|---------------------------------|----------------------------------|-------------|
-| 01  | Trebuchet?!                     | [src/Day01.php](./src/Day01.php) | `0.002655s` |
-| 02  | Cube Conundrum                  | [src/Day02.php](./src/Day02.php) | `0.001402s` |
-| 03  | Gear Ratios                     | [src/Day03.php](./src/Day03.php) | `0.006805s` |
-| 04  | Scratchcards                    | [src/Day04.php](./src/Day04.php) | `0.006466s` |
-| 05  | If You Give A Seed A Fertilizer | [src/Day05.php](./src/Day05.php) | `0.002637s` |
-| 06  | Wait For It                     | [src/Day06.php](./src/Day06.php) | `0.000059s` |
-| 07  | Camel Cards                     | [src/Day07.php](./src/Day07.php) | `0.239075s` |
-| 08  | Haunted Wasteland               | [src/Day08.php](./src/Day08.php) | `0.066197s` |
-| 09  | Mirage Maintenance              | [src/Day09.php](./src/Day09.php) | `0.027672s` |
-| 10  | Pipe Maze                       | [src/Day10.php](./src/Day10.php) | `0.023185s` |
-| 11  | Cosmic Expansion                | [src/Day11.php](./src/Day11.php) | `1.122419s` |
-| 12  | Hot Springs                     | [src/Day12.php](./src/Day12.php) | Not Solved  |
-| 13  | Point of Incidence              | [src/Day13.php](./src/Day13.php) | `0.015861s` |
-| 14  | Parabolic Reflector Dish        | [src/Day14.php](./src/Day14.php) | `0.996860s` |
+| Day | Name                            | Code                             | Time †          |
+|-----|---------------------------------|----------------------------------|-----------------|
+| 01  | Trebuchet?!                     | [src/Day01.php](./src/Day01.php) | `0.002655s`     |
+| 02  | Cube Conundrum                  | [src/Day02.php](./src/Day02.php) | `0.001402s`     |
+| 03  | Gear Ratios                     | [src/Day03.php](./src/Day03.php) | `0.006805s`     |
+| 04  | Scratchcards                    | [src/Day04.php](./src/Day04.php) | `0.006466s`     |
+| 05  | If You Give A Seed A Fertilizer | [src/Day05.php](./src/Day05.php) | `0.002637s`     |
+| 06  | Wait For It                     | [src/Day06.php](./src/Day06.php) | `0.000059s`     |
+| 07  | Camel Cards                     | [src/Day07.php](./src/Day07.php) | `0.239075s`     |
+| 08  | Haunted Wasteland               | [src/Day08.php](./src/Day08.php) | `0.066197s`     |
+| 09  | Mirage Maintenance              | [src/Day09.php](./src/Day09.php) | `0.027672s`     |
+| 10  | Pipe Maze                       | [src/Day10.php](./src/Day10.php) | `0.023185s`     |
+| 11  | Cosmic Expansion                | [src/Day11.php](./src/Day11.php) | `1.122419s`     |
+| 12  | Hot Springs                     | [src/Day12.php](./src/Day12.php) | Part 2 Unsolved |
+| 13  | Point of Incidence              | [src/Day13.php](./src/Day13.php) | `0.015861s`     |
+| 14  | Parabolic Reflector Dish        | [src/Day14.php](./src/Day14.php) | `0.996860s`     |
+| 15  | Lens Library                    |                                  | Not Started     |
+| 16  | The Floor Will Be Lava          | [src/Day16.php](./src/Day16.php) | ``              |
 
 † The measured execution time in GitHub Actions
 
