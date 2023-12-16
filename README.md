@@ -21,7 +21,7 @@ My attempts at the [Advent of Code 2023](https://adventofcode.com/2023) challeng
 | 13  | Point of Incidence              | [src/Day13.php](./src/Day13.php) | `0.015861s`     |
 | 14  | Parabolic Reflector Dish        | [src/Day14.php](./src/Day14.php) | `0.996860s`     |
 | 15  | Lens Library                    |                                  | Not Started     |
-| 16  | The Floor Will Be Lava          | [src/Day16.php](./src/Day16.php) | ``              |
+| 16  | The Floor Will Be Lava          | [src/Day16.php](./src/Day16.php) | `5.479180s`     |
 
 † The measured execution time in GitHub Actions
 
